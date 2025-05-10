@@ -1,0 +1,38 @@
+{
+  "name": "web-starter",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon -w index.ts -w server -e ts -x 'vite-node index.ts'",
+    "build": "npm run build:src && npm run build:ssr && npm run build:server",
+    "build:src": "vite build",
+    "build:ssr": "vite build -c vite.ssr.config.ts",
+    "build:lib": "vite build -c vite.lib.config.ts",
+    "build:server": "rimraf dist/index.js dist/server && tsc -p tsconfig.server.json",
+    "preview": "cross-env NODE_ENV=production node dist/index.js",
+    "prepublishOnly": "npm run build:lib"
+  },
+  "dependencies": {
+    "compression": "^1.8.0",
+    "express": "^5.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "sirv": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.5",
+    "@types/css-modules": "^1.0.5",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.17",
+    "@types/react": "^19.1.3",
+    "@types/react-dom": "^19.1.3",
+    "@vitejs/plugin-react": "^4.4.1",
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.10",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-node": "^3.1.3",
+    "vite-plugin-dts": "^4.5.3"
+  }
+}
